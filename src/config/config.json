@@ -1,6 +1,7 @@
 {
   "site": {
     "title": "LokSewa Hub",
+    "description":"All in one loksewa prepartion platform",
     "base_url": "https://josephrana12.github.io",
     "base_path": "/loksewa-hub",
     "trailing_slash": false,
