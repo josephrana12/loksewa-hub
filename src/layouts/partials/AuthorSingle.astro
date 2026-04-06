@@ -22,7 +22,7 @@ const filterByAuthor = posts.filter((post) =>
           {
             image && (
               <Image
-                src={image}
+                  src={`${import.meta.env.BASE_URL}${image}`}                
                 class="mx-auto mb-8"
                 height={300}
                 width={300}

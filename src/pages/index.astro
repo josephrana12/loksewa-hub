@@ -43,7 +43,7 @@ const totalPages = Math.ceil(posts.length / settings.pagination);
         {
           banner?.image && (
             <Image
-              src={banner.image}
+             src={`${import.meta.env.BASE_URL}${banner.image}`} 
               width={768}
               height={385}
               alt={banner.title}
@@ -63,7 +63,7 @@ const totalPages = Math.ceil(posts.length / settings.pagination);
               <div class="mb-4 overflow-hidden rounded-md">
                 {category.image && (
                   <Image
-                    src={category.image}
+                     src={`${import.meta.env.BASE_URL}${category.image}`} 
                     alt={category.title}
                     width={400}
                     height={200}

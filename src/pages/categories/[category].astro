@@ -52,7 +52,9 @@ const totalPages = Math.ceil(filterByTags.length / pagination);
       <div class="banner-illustration">
         {
           banner?.image && (
-            <Image src={banner?.image} width={768} height={385} alt="" />
+            <Image 
+             src={`${import.meta.env.BASE_URL}${banner.image}`} 
+             width={768} height={385} alt="" />
           )
         }
       </div>

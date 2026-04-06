@@ -66,8 +66,8 @@ const { title, image, content } = entry.data;
           {
             image && (
               <Image
+                src={`${import.meta.env.BASE_URL}${image}`} 
                 class="w-full"
-                src={image}
                 width={540}
                 height={515}
                 alt=""

@@ -65,7 +65,9 @@ const { title, authors, categories, image, date } = post.data;
             </ul>
             {
               image && (
-                <Image src={image} height={500} width={1000} alt={title} />
+                <Image 
+                  src={`${import.meta.env.BASE_URL}${image}`} 
+                height={500} width={1000} alt={title} />
               )
             }
             <div class="content mb-16 text-left">
