@@ -18,8 +18,8 @@ function escapeXml(str: string): string {
 export async function GET(context: APIContext): Promise<Response> {
   const publishedPosts = await getSinglePage("posts");
   const site = (context.site || new URL(config.site.base_url)).toString().replace(/\/$/, "");
-  const title = escapeXml(config.site.title || "Northendlab Light Astro");
-  const description = escapeXml("Northendlab Light Astro Blog");
+  const title = escapeXml(config.site.title);
+  const description = escapeXml("All in one Loksewa prepartion platform");
 
   const items = publishedPosts
     .map((post: CollectionEntry<"posts">) => {
