@@ -23,7 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install deps
-        run: npm install
+        run: npm install --force
 
       - name: Build Astro
         run: npm run build
