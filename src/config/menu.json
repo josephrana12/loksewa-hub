@@ -1,0 +1,44 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Categories",
+      "url": "/categories",
+      "hasChildren": true,
+      "children" : [
+        {
+          "name" : "General Knowledge",
+          "url" : "/",
+          "imageUrl" : "/images/categories/placeholder-1.png"
+        },
+        {
+          "name" : "Public Administration",
+          "url" : "",
+          "imageUrl" : "/images/categories/placeholder-2.png"
+        },
+        {
+          "name" : "Current Affairs",
+          "url" : "",
+          "imageUrl" : "/images/categories/placeholder-3.png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    }
+  ]
+}

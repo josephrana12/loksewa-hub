@@ -1,0 +1,102 @@
+---
+import Post from "@/components/Post.astro";
+import { settings } from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import Cta from "@/layouts/components/Cta.astro";
+import Pagination from "@/layouts/components/Pagination.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const homepage = (await getEntry(
+  "homepage",
+  "-index"
+)) as CollectionEntry<"homepage">;
+
+// Extract 'categories' from the homepage data
+const { banner, categories } = homepage.data;
+
+const posts = await getSinglePage("posts");
+const sortPostByDate = sortByDate(posts);
+const totalPages = Math.ceil(posts.length / settings.pagination);
+---
+
+<Base>
+  <section
+    class="banner"
+    style="background-image: url('/images/banner/banner-bg.svg')"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-6">
+          {
+            banner?.title && (
+              <h1 set:html={markdownify(banner?.title)} class="h2 mb-8" />
+            )
+          }
+        </div>
+      </div>
+      <div class="banner-illustration">
+        {
+          banner?.image && (
+            <Image
+              src={banner.image}
+              width={768}
+              height={385}
+              alt={banner.title}
+            />
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section py-12">
+    <div class="container">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          categories?.map((category: any) => (
+            <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+              <div class="mb-4 overflow-hidden rounded-md">
+                {category.image && (
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    width={400}
+                    height={200}
+                    class="h-48 w-full object-contain"
+                  />
+                )}
+              </div>
+              <h3 class="mb-2 text-xl font-bold">{category.title}</h3>
+              <p class="text-gray-600" set:html={markdownify(category.content)} />
+              <a 
+                href={`/categories/${category.title.toLowerCase().replace(/ /g, "-")}`} 
+                class="mt-4 inline-block font-medium text-primary hover:underline"
+              >
+                Explore Category →
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+          <div class="rounded py-12 px-9 shadow md:p-[60px]">
+            <h4 class="mb-4">Read Latest From Our Blog</h4>
+            {
+              sortPostByDate
+                .slice(0, settings.pagination)
+                .map((post) => <Post post={post} />)
+            }
+            <Pagination currentPage={1} totalPages={totalPages} />
+          </div>
+    </div>
+  </section>
+</Base>

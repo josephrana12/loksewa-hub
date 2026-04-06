@@ -1,0 +1,28 @@
+{
+  "site": {
+    "title": "LokSewa Hub",
+    "base_url": "https://josephrana12.github.io",
+    "base_path": "/loksewa-hub",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.svg",
+    "logo_width": "197",
+    "logo_height": "31",
+    "logo_text": "LokSewa Hub"
+  },
+
+  "settings": {
+    "pagination": 5
+  },
+
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": "GTM-XXXXXX"
+  },
+
+  "metadata": {
+    "meta_author": "Themefisher",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Northendlab Light Astro Blog Theme"
+  }
+}
